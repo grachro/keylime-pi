@@ -1,4 +1,4 @@
-name := """keylime-pi"""
+name := """pumpkin-pi"""
 
 version := "1.0-SNAPSHOT"
 
