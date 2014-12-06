@@ -9,12 +9,11 @@ import play.db.DB;
 import play.db.ebean.Model.Finder;
 import play.mvc.Controller;
 import play.mvc.Result;
-import views.html.index;
+import views.html.*;
 
 public class Application extends Controller {
 
-    public static Result index() {
-        Object connection = DB.getConnection();
+	public static Result index() {
         
         {
         Line line = new Line();
@@ -25,13 +24,11 @@ public class Application extends Controller {
         
         Finder<String, Line> finder = new Finder<String, Line>(String.class, Line.class);
         List<Line> lines =  finder.all();
-        System.out.println("lines::START");
+        StringBuilder msg = new StringBuilder();
         for (Line line:lines) {
-            System.out.println(line);
+        	msg.append(line).append("\n");
         }
-        System.out.println("lines::END");
-        
-        return ok(index.render("Your new application is ready."));
+        //return ok(msg.toString());
+        return ok(list.render(lines));  
     }
-
 }
